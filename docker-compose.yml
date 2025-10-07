@@ -1,0 +1,126 @@
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_ENV: ${APP_ENV}
+      APP_KEY: ${APP_KEY}
+      APP_DEBUG: ${APP_DEBUG}
+      APP_URL: ${APP_URL}
+    volumes:
+      - ./app:/var/www
+      - ./docker-files/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./docker-files/php/php.ini-development:/usr/local/etc/php/php.ini
+      - laravel_vendor:/var/www/vendor  # отдельный volume для vendor
+      - laravel_logs:/var/www/storage/logs
+      - laravel_cache:/var/www/bootstrap/cache
+      - laravel_framework:/var/www/storage/framework
+      - laravel_storage_public:/var/www/storage/app/public
+    networks:
+      - app-network
+
+  parser:
+    container_name: parser
+    build:
+      context: ./parser_flights
+      dockerfile: Dockerfile
+    ports:
+      - "${PARSER_PORT}:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./parser_flights/:/srv/parser/
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  webserver:
+    build:
+      context: ./docker-files/nginx
+      dockerfile: Dockerfile
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    healthcheck:
+      test: ["CMD", "service", "nginx", "status"]
+      interval: 5s
+    ports:
+      - "8100:80"
+      - "8143:443"
+    volumes:
+      - ./app:/var/www
+      - ./docker-files/nginx/conf.d/nginx.conf:/etc/nginx/nginx.conf
+      - laravel_vendor:/var/www/vendor  # отдельный volume для vendor
+      - laravel_logs:/var/www/storage/logs
+      - laravel_cache:/var/www/bootstrap/cache
+      - laravel_framework:/var/www/storage/framework
+      - laravel_storage_public:/var/www/storage/app/public
+    networks:
+      - app-network
+    links:
+      - app
+
+  db:
+    image: postgres:17
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: secret
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+  laravel_vendor:
+    driver: local
+  laravel_logs:
+    driver: local
+  laravel_cache:
+    driver: local
+  laravel_framework:
+    driver: local
+  laravel_storage_public:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,22 @@
+stages:
+    - deploy
+
+deploy:
+    stage: deploy
+    only:
+      - dev
+    before_script:
+        - apt-get update -qq && apt-get install -y -qq sshpass
+        - mkdir -p ~/.ssh
+        - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    script:
+        - sshpass -p $LTC_SERVER_SSH_PASS -v ssh root@$LTC_SERVER_SSH_IP "
+            cd /srv/v2 &&
+            git reset --hard &&
+            git checkout dev &&
+            git pull &&
+            docker compose down --remove-orphans &&
+            docker compose pull &&
+            docker compose build --no-cache &&
+            docker compose -f docker-compose.yml -f docker-compose.staging.yml up -d --force-recreate
+            "
