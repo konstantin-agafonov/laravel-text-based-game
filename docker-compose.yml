@@ -28,23 +28,6 @@ services:
     networks:
       - app-network
 
-  parser:
-    container_name: parser
-    build:
-      context: ./parser_flights
-      dockerfile: Dockerfile
-    ports:
-      - "${PARSER_PORT}:8000"
-    env_file:
-      - .env
-    volumes:
-      - ./parser_flights/:/srv/parser/
-    depends_on:
-      db:
-        condition: service_healthy
-    networks:
-      - app-network
-
   webserver:
     build:
       context: ./docker-files/nginx
