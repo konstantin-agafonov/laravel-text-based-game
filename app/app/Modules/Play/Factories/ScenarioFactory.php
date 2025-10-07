@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Modules\City\Factories;
+namespace App\Modules\Play\Factories;
 
 use App\Modules\City\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * Фабрика модели города.
+ * Фабрика модели сценария.
  */
-class CityFactory extends Factory
+class ScenarioFactory extends Factory
 {
     /**
      * Имя модели.

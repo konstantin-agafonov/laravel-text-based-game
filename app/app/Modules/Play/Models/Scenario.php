@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\City\Models;
+namespace App\Modules\Play\Models;
 
 use App\Models\BaseModel;
 use App\Models\HasRemovableGlobalScopes;
@@ -8,14 +8,14 @@ use App\Modules\City\Factories\CityFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Модель города.
+ * Модель сценария.
  *
  * @property int $id Идентификатор города
  * @property string $name Название города
  */
-class City extends BaseModel
+class Scenario extends BaseModel
 {
-    use CityRelationsTrait,
+    use ScenarioRelationsTrait,
         HasFactory,
         HasRemovableGlobalScopes;
 

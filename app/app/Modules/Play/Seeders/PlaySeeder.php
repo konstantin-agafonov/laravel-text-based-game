@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Modules\City\Seeders;
+namespace App\Modules\Play\Seeders;
 
 use App\Modules\City\Models\City;
 use App\Seeders\BaseSeeder;
 use Illuminate\Support\Facades\File;
 
 /**
- * Класс создания городов.
+ * Класс создания игровых данных.
  */
-class CitySeeder extends BaseSeeder
+class PlaySeeder extends BaseSeeder
 {
     /**
      * Имя модели.

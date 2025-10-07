@@ -2,8 +2,6 @@
 
 namespace App\Modules\City\Models;
 
-use App\Modules\Offer\Models\Offer;
-use App\Modules\Tour\Models\Tour;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
@@ -21,21 +19,21 @@ trait CityRelationsTrait
      *
      * @return HasMany
      */
-    public function tours(): HasMany
+    /*public function tours(): HasMany
     {
         return $this->hasMany(
             Tour::class,
             'city_id',
             'id'
         );
-    }
+    }*/
 
     /**
      * Возвращает связь с предложениями.
      *
      * @return BelongsToMany
      */
-    public  function offers(): BelongsToMany
+    /*public  function offers(): BelongsToMany
     {
         return $this->belongsToMany(
             Offer::class,
@@ -45,5 +43,5 @@ trait CityRelationsTrait
         )
             ->using(CityOffer::class)
             ->withPivot('id');
-    }
+    }*/
 }
