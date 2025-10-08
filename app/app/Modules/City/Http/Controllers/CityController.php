@@ -7,12 +7,13 @@ use App\Modules\City\Http\Resources\CityCollection;
 use App\Modules\City\Http\Resources\CityResource;
 use App\Modules\City\Models\City;
 use App\Modules\City\Services\CityService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Cities controller.
- * 
+ *
  * Handles HTTP requests for city-related operations including
  * listing, viewing, creating, updating, and deleting cities.
  */
@@ -54,9 +55,9 @@ class CityController extends Controller
      * Store a newly created city.
      *
      * @param Request $request The HTTP request containing city data
-     * @return \Illuminate\Http\JsonResponse JSON response with created city data
+     * @return JsonResponse JSON response with created city data
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $data = $request->validate([
             'name'          => 'required|string|max:255',
@@ -75,7 +76,7 @@ class CityController extends Controller
 
         $city = City::create($data);
 
-        return response()->json($city, Response::HTTP_CREATED);
+        return response()->json(CityResource::make($city), Response::HTTP_CREATED);
     }
 
     /**
@@ -83,9 +84,9 @@ class CityController extends Controller
      *
      * @param Request $request The HTTP request containing updated city data
      * @param City $city The city model instance to update
-     * @return \Illuminate\Http\JsonResponse JSON response with updated city data
+     * @return JsonResponse JSON response with updated city data
      */
-    public function update(Request $request, City $city)
+    public function update(Request $request, City $city): JsonResponse
     {
         $data = $request->validate([
             'name'          => 'sometimes|required|string|max:255',
@@ -111,9 +112,9 @@ class CityController extends Controller
      * Remove the specified city.
      *
      * @param City $city The city model instance to delete
-     * @return \Illuminate\Http\JsonResponse Empty JSON response with 204 status
+     * @return JsonResponse Empty JSON response with 204 status
      */
-    public function destroy(City $city)
+    public function destroy(City $city): JsonResponse
     {
         $city->delete();
 
