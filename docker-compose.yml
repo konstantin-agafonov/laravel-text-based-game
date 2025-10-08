@@ -48,7 +48,7 @@ services:
       #- laravel_vendor:/var/www/vendor
       #- laravel_cache:/var/www/bootstrap/cache
       #- laravel_framework:/var/www/storage/framework
-      #- laravel_storage_public:/var/www/storage/app/public
+      - laravel_storage_public:/var/www/storage/app/public
     networks:
       - app-network
     links:
