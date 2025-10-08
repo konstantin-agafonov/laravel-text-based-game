@@ -2,11 +2,21 @@
 
 namespace App\Modules\Play\Services;
 
+use App\Modules\Play\Data\PlayData;
+
 class PlayService
 {
 
-    public function play(): string
+    /**
+     * Формирует и возвращает ответ на ход игрока
+     *
+     * @param PlayData $playData
+     * @return array
+     */
+    public function play(PlayData $playData): array
     {
-        return 'move';
+        return [
+            'your_move' => $playData->move
+        ];
     }
 }

@@ -15,6 +15,7 @@ class CityRoutes
      */
     public static function register(): void
     {
-        Route::apiResource('city', CityController::class);
+        Route::apiResource('city', CityController::class)
+            ->only(['index', 'show']);
     }
 }
