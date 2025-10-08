@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.10.1",
         "spatie/laravel-data": "^4.17",
         "spatie/laravel-medialibrary": "^11.15",
+        "spatie/laravel-permission": "^6.21",
         "wapmorgan/morphos": "^3.2"
     },
     "require-dev": {

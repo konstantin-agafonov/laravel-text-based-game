@@ -27,6 +27,14 @@ else
   fi
 fi
 
+# Clear cache
+if [ "${APP_ENV}" = "production" ]; then
+  echo "Skipping clear cache in production"
+else
+  echo "Clear cache..."
+  php artisan cache:clear
+fi
+
 # Start main process (php-fpm)
 echo "Starting PHP-FPM..."
 exec "$@"
