@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('is_capital')->nullable();
             $table->string('zip')->nullable();
             $table->integer('population')->nullable();
-            $table->integer('year_founded')->nullable();
+            $table->string('year_founded')->nullable();
             $table->string('name_en')->nullable();
             $table->string('lat')->nullable();
             $table->string('lon')->nullable();

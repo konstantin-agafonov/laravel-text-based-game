@@ -64,7 +64,6 @@ class City extends BaseModel
         'is_dual_name' => 'boolean',
         'is_capital' => 'boolean',
         'population' => 'integer',
-        'year_founded' => 'integer',
     ];
 
     /**
