@@ -6,13 +6,13 @@ use App\Modules\City\Models\City;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
- * Сервис городов.
+ * City service.
  */
 class CityService
 {
 
     /**
-     * Возвращает города.
+     * Returns cities.
      *
      * @return LengthAwarePaginator
      */

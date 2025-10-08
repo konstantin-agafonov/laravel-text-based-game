@@ -6,15 +6,15 @@ use RuntimeException;
 use Throwable;
 
 /**
- * Абстрактный трансформер массива в DTO.
+ * Abstract array to DTO transformer.
  */
 abstract class AbstractArrayTransformer
 {
     /**
-     * Проверка полей массива.
+     * Check array fields.
      *
-     * @param string $name Название поля
-     * @param array $data Проверяемый массив
+     * @param string $name Field name
+     * @param array $data Array to check
      * @return void
      * @throws Throwable
      */

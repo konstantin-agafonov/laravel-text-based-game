@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Support\Arr;
 
 /**
- * Трейт удаления глобальных скоупов.
+ * Removable global scopes trait.
  */
 trait HasRemovableGlobalScopes
 {
     /**
-     * Удаление одного скоупа.
+     * Remove one scope.
      *
-     * @param Scope|string $scope Скоуп
+     * @param Scope|string $scope Scope
      * @return void
      */
     public static function withoutGlobalScope(Scope|string $scope): void
@@ -29,9 +29,9 @@ trait HasRemovableGlobalScopes
     }
 
     /**
-     * Удаление нескольких скоупов.
+     * Remove multiple scopes.
      *
-     * @param array $scopes Скоупы
+     * @param array $scopes Scopes
      * @return void
      */
     public static function withoutGlobalScopes(array $scopes = []): void

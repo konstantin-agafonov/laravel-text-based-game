@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 class PlayController extends Controller
 {
     /**
-     * Конструктор.
+     * Constructor.
      *
-     * @param PlayService $service Сервис игры
+     * @param PlayService $service Play service
      */
     public function __construct(
         private readonly PlayService $service

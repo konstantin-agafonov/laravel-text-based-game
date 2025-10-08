@@ -7,19 +7,19 @@ use App\Seeders\BaseSeeder;
 use Illuminate\Support\Facades\File;
 
 /**
- * Класс создания городов.
+ * City creation class.
  */
 class CitySeeder extends BaseSeeder
 {
     /**
-     * Имя модели.
+     * Model name.
      *
      * @var string
      */
     public string $model = City::class;
 
     /**
-     * Создаёт записи.
+     * Creates records.
      *
      * @return void
      */

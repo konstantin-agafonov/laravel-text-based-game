@@ -1,9 +1,9 @@
 FROM php:8.4-fpm
 
-# Рабочая директория
+# Working directory
 WORKDIR /var/www
 
-# Установка системных зависимостей
+# Install system dependencies
 RUN apt update && \
     apt install -y \
         libzip-dev zip \
@@ -16,38 +16,38 @@ RUN apt update && \
         vim unzip git curl \
     && apt clean && rm -rf /var/lib/apt/lists/*
 
-# Установка расширений PHP
+# Install PHP extensions
 RUN docker-php-ext-install zip pdo_pgsql exif
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-enable exif
 
-# Установка Composer
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- \
     --install-dir=/usr/local/bin \
     --filename=composer
 
-# Создание пользователя
+# Create user
 RUN groupadd -g 1000 www && \
     useradd -u 1000 -ms /bin/bash -g www www
 
-# Копируем только файлы зависимостей для кеша
+# Copy only dependency files for cache
 COPY ./app/composer.json ./app/composer.lock /var/www/
 
-# Ставим зависимости БЕЗ скриптов (artisan ещё нет)
+# Install dependencies WITHOUT scripts (artisan not yet available)
 RUN composer install --optimize-autoloader --no-scripts
 
-# Теперь копируем весь проект
+# Now copy the entire project
 COPY --chown=www:www ./app /var/www
 
-# Теперь можно запустить composer заново, чтобы прошли скрипты (artisan уже есть)
+# Now run composer again to execute scripts (artisan is now available)
 RUN composer install --optimize-autoloader
 
-# Копируем entrypoint
+# Copy entrypoint
 COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Права
+# Set permissions
 RUN chown -R www:www /var/www
 
 USER www

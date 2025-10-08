@@ -3,21 +3,21 @@
 namespace App\Filters;
 
 /**
- * Класс фильтра на основе параметров
+ * Parameter-based filter class
  */
 class ParamsQueryFilter extends AbstractQueryFilter
 {
     /**
-     * Параметры.
+     * Parameters.
      *
      * @var array
      */
     private array $params;
 
     /**
-     * Конструктор.
+     * Constructor.
      *
-     * @param array $params Параметры
+     * @param array $params Parameters
      */
     public function __construct(array $params)
     {
@@ -25,7 +25,7 @@ class ParamsQueryFilter extends AbstractQueryFilter
     }
 
     /**
-     * Возвращает массив фильтров.
+     * Returns array of filters.
      *
      * @return array
      */

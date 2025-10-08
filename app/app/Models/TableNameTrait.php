@@ -3,12 +3,12 @@
 namespace App\Models;
 
 /**
- * Трейт имени таблицы.
+ * Table name trait.
  */
 trait TableNameTrait
 {
     /**
-     * Возвращает имя таблицы.
+     * Returns table name.
      *
      * @return string
      */

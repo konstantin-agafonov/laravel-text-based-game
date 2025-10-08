@@ -11,14 +11,14 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Контроллер городов.
+ * Cities controller.
  */
 class CityController extends Controller
 {
     /**
-     * Конструктор.
+     * Constructor.
      *
-     * @param CityService $service Сервис стран
+     * @param CityService $service City service
      */
     public function __construct(
         private readonly CityService $service
@@ -27,7 +27,7 @@ class CityController extends Controller
     }
 
     /**
-     * Возвращает города.
+     * Returns cities.
      *
      * @return CityCollection
      */
@@ -37,7 +37,7 @@ class CityController extends Controller
     }
 
     /**
-     * Возвращает ресурс города.
+     * Returns city resource.
      *
      * @param City $city
      * @return CityResource
@@ -48,7 +48,7 @@ class CityController extends Controller
     }
 
     /**
-     * Создать новый город.
+     * Create a new city.
      */
     public function store(Request $request)
     {
@@ -73,7 +73,7 @@ class CityController extends Controller
     }
 
     /**
-     * Обновить данные города.
+     * Update city data.
      */
     public function update(Request $request, City $city)
     {
@@ -98,7 +98,7 @@ class CityController extends Controller
     }
 
     /**
-     * Удалить город.
+     * Delete city.
      */
     public function destroy(City $city)
     {

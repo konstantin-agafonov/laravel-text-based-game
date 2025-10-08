@@ -7,15 +7,15 @@ use RuntimeException;
 use Throwable;
 
 /**
- * Абстрактный трансформер.
+ * Abstract transformer.
  */
 abstract class AbstractRequestTransformer
 {
     /**
-     * Проверка полей запроса.
+     * Check request fields.
      *
-     * @param string $name Название поля
-     * @param Request $request Запрос
+     * @param string $name Field name
+     * @param Request $request Request
      * @return void
      * @throws Throwable
      */
@@ -28,11 +28,11 @@ abstract class AbstractRequestTransformer
     }
 
     /**
-     * Проверка массива полей.
+     * Check array of fields.
      *
-     * @param string $fieldName Название массива
-     * @param array $keys Названия полей
-     * @param Request $request Запрос
+     * @param string $fieldName Array name
+     * @param array $keys Field names
+     * @param Request $request Request
      * @return void
      * @throws Throwable
      */

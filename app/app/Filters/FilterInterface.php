@@ -5,19 +5,19 @@ namespace App\Filters;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Интерфейс фильтра.
+ * Filter interface.
  */
 interface FilterInterface
 {
     /**
-     * Возвращает набор параметров для фильтрации.
+     * Returns set of parameters for filtering.
      *
      * @return array
      */
     public function filters(): array;
 
     /**
-     * Применяет фильтр.
+     * Applies filter.
      *
      * @param Builder $builder
      * @return Builder

@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 /**
- * Коллекция городов.
+ * City collection.
  */
 class CityCollection extends ResourceCollection
 {
     /**
-     * Преобразует коллекцию ресурсов в массив.
+     * Transforms resource collection to array.
      *
      * @return array<int|string, mixed>
      */

@@ -5,17 +5,17 @@ namespace App\Filters;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Трейт фильтра для моделей.
+ * Filter trait for models.
  *
  * @method static Builder filtered(FilterInterface $filter)
  */
 trait InteractsWithFilter
 {
     /**
-     * Фильтр.
+     * Filter.
      *
-     * @param Builder $builder Запрос
-     * @param FilterInterface $filter Фильтр
+     * @param Builder $builder Query
+     * @param FilterInterface $filter Filter
      * @return Builder
      */
     public function scopeFiltered(Builder $builder, FilterInterface $filter): Builder

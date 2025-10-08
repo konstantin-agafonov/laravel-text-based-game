@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Support\Collection;
 
 /**
- * Трейт параметров модели.
+ * Model options trait.
  */
 trait HasOptions
 {
     /**
-     * Возвращает параметры модели в виде коллекции.
+     * Returns model options as collection.
      *
-     * @param bool $all Наличие выбора всех полей
-     * @param string $fieldId Индефикатор поле
-     * @param string $fieldName Название поле
+     * @param bool $all All fields selection availability
+     * @param string $fieldId Field identifier
+     * @param string $fieldName Field name
      * @return Collection
      */
     public static function options(
@@ -25,7 +25,7 @@ trait HasOptions
     {
         $options = self::all()->pluck($fieldName, $fieldId);
         if ($all) {
-            $options->prepend(__('Все'), 0);
+            $options->prepend(__('All'), 0);
         }
         return $options;
     }

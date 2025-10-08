@@ -5,47 +5,47 @@ namespace App\Filters;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Класс фильтра на основе запроса.
+ * Query-based filter class.
  */
 abstract class AbstractQueryFilter implements FilterInterface
 {
     /**
-     * Билдер.
+     * Builder.
      *
      * @var Builder
      */
     protected Builder $builder;
 
     /**
-     * Разделитель параметров.
+     * Parameter delimiter.
      *
      * @var string
      */
     private string $paramsDelimiter = ',';
 
     /**
-     * Разделитель сегметов даты.
+     * Date segment delimiter.
      *
      * @var string
      */
     private string $dateDelimiter = '-';
 
     /**
-     * Формат даты.
+     * Date format.
      *
      * @var string
      */
     private string $dateFormat = "Y-m-d";
 
     /**
-     * Возвращает массив фильтров.
+     * Returns array of filters.
      *
      * @return array
      */
     abstract public function filters(): array;
 
     /**
-     * Применяет фильтры.
+     * Applies filters.
      *
      * @param Builder $builder
      * @return Builder
@@ -66,7 +66,7 @@ abstract class AbstractQueryFilter implements FilterInterface
     }
 
     /**
-     * Форматирует даты.
+     * Formats dates.
      *
      * @param string $date
      * @param string $field
@@ -83,7 +83,7 @@ abstract class AbstractQueryFilter implements FilterInterface
     }
 
     /**
-     * Прeобразовывает параметры в массив.
+     * Converts parameters to array.
      *
      * @param $param
      * @return array

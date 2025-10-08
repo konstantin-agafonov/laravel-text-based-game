@@ -6,12 +6,12 @@ use App\Modules\City\Http\Controllers\CityController;
 use Illuminate\Support\Facades\Route;
 
 /**
- * Роуты для городов.
+ * Routes for cities.
  */
 class CityRoutes
 {
     /**
-     * Регистрация роутов.
+     * Route registration.
      */
     public static function register(): void
     {

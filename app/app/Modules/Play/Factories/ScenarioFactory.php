@@ -6,19 +6,19 @@ use App\Modules\City\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * Фабрика модели сценария.
+ * Scenario model factory.
  */
 class ScenarioFactory extends Factory
 {
     /**
-     * Имя модели.
+     * Model name.
      *
      * @var string
      */
     protected $model = City::class;
 
     /**
-     * Определение полей модели.
+     * Model field definition.
      *
      * @return array
      */

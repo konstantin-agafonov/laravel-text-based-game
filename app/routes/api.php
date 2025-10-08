@@ -9,7 +9,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// Маршруты городов
+// City routes
 CityRoutes::register();
 
 PlayRoutes::register();

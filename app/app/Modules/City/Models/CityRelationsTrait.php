@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
 /**
- * Трейт связей города.
+ * City relationships trait.
  *
- * @property Collection<Tour> $tours Туры
- * @property Collection<Offer> $offers Предложения
+ * @property Collection<Tour> $tours Tours
+ * @property Collection<Offer> $offers Offers
  */
 trait CityRelationsTrait
 {
     /**
-     * Возвращает связь с турами.
+     * Returns relationship with tours.
      *
      * @return HasMany
      */
@@ -29,7 +29,7 @@ trait CityRelationsTrait
     }*/
 
     /**
-     * Возвращает связь с предложениями.
+     * Returns relationship with offers.
      *
      * @return BelongsToMany
      */

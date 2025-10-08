@@ -8,7 +8,7 @@ class PlayService
 {
 
     /**
-     * Формирует и возвращает ответ на ход игрока
+     * Forms and returns response to player's move
      *
      * @param PlayData $playData
      * @return array

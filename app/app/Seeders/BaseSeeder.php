@@ -5,26 +5,26 @@ namespace App\Seeders;
 use Illuminate\Database\Seeder;
 
 /**
- * Базовый класс сидера.
+ * Base seeder class.
  */
 abstract class BaseSeeder extends Seeder
 {
     /**
-     * Имя модели.
+     * Model name.
      *
      * @var string
      */
     public string $model;
 
     /**
-     * Признак очищения таблицы в начале работы сидера.
+     * Flag to clear table at the beginning of seeder work.
      *
      * @var bool
      */
     public bool $clear = false;
 
     /**
-     * Запускает выполнение.
+     * Runs execution.
      *
      * @return void
      */
@@ -37,7 +37,7 @@ abstract class BaseSeeder extends Seeder
     }
 
     /**
-     * Создаёт записи.
+     * Creates records.
      *
      * @return void
      */
@@ -47,7 +47,7 @@ abstract class BaseSeeder extends Seeder
     }
 
     /**
-     * Очищает сиды.
+     * Clears seeds.
      *
      * @return void
      */

@@ -9,7 +9,7 @@ use Tests\AbstractUnitTestCase;
 use Tests\Unit\AssertModelTrait;
 
 /**
- * Тест модели города.
+ * City model test.
  *
  * @see City
  */
@@ -18,14 +18,14 @@ class CityTest extends AbstractUnitTestCase
     use AssertModelTrait;
 
     /**
-     * Имя модели.
+     * Model name.
      *
      * @var string
      */
     private string $model = City::class;
 
     /**
-     * Тест имени таблицы.
+     * Table name test.
      *
      * @covers \App\Modules\City\Models\City::getTable()
      * @return void
@@ -39,7 +39,7 @@ class CityTest extends AbstractUnitTestCase
     }
 
     /**
-     * Тест связи с турами.
+     * Tours relationship test.
      *
      * @covers \App\Modules\City\Models\City::tours
      */
@@ -55,7 +55,7 @@ class CityTest extends AbstractUnitTestCase
     }
 
     /**
-     * Тест связи с предложениями
+     * Offers relationship test
      *
      * @covers \App\Modules\City\Models\City::offers
      * @return void

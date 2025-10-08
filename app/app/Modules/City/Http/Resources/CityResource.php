@@ -7,15 +7,15 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use morphos\Russian\GeographicalNamesInflection;
 
 /**
- * Класс ресурса города.
+ * City resource class.
  *
- * @property int $id Идентификатор города
- * @property string $name Название города
+ * @property int $id City identifier
+ * @property string $name City name
  */
 class CityResource extends JsonResource
 {
     /**
-     * Преобразовывает ресурс в массив.
+     * Transforms resource to array.
      *
      * @return array<string, mixed>
      */
@@ -35,7 +35,7 @@ class CityResource extends JsonResource
             'name_en'       => $this->name_en,
             'lat'           => $this->lat,
             'lon'           => $this->lon,
-            'name_genitive' => GeographicalNamesInflection::getCase($this->name, 'родительный'),
+            'name_genitive' => GeographicalNamesInflection::getCase($this->name, 'genitive'),
         ];
     }
 }

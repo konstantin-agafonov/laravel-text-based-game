@@ -5,15 +5,15 @@ namespace App\Filters;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Интерфейс фильтра для моделей.
+ * Filter interface for models.
  */
 interface HasFilter
 {
     /**
-     * Фильтр.
+     * Filter.
      *
-     * @param Builder $builder Билдер
-     * @param FilterInterface $filter Фильтр
+     * @param Builder $builder Builder
+     * @param FilterInterface $filter Filter
      * @return Builder
      */
     public function scopeFiltered(Builder $builder, FilterInterface $filter): Builder;

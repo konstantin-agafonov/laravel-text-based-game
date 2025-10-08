@@ -7,19 +7,19 @@ use App\Seeders\BaseSeeder;
 use Illuminate\Support\Facades\File;
 
 /**
- * Класс создания игровых данных.
+ * Game data creation class.
  */
 class PlaySeeder extends BaseSeeder
 {
     /**
-     * Имя модели.
+     * Model name.
      *
      * @var string
      */
     public string $model = City::class;
 
     /**
-     * Создаёт записи.
+     * Creates records.
      *
      * @return void
      */

@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Expression;
 
 /**
- * Базовая модель.
+ * Base model.
  *
  * @method static latest()
  * @method static orderBy(Closure|Build|Builder|Expression|string $column, string $direction = 'asc')
@@ -40,7 +40,7 @@ use Illuminate\Database\Query\Expression;
  * @method static name(string $name)
  * @method static whereNotNull(string|array $columns, string $boolean = 'and')
  *
- * @property Carbon $deleted_at Временная метка мягкого удаления
+ * @property Carbon $deleted_at Soft delete timestamp
  */
 class BaseModel extends Model implements HasFilter
 {

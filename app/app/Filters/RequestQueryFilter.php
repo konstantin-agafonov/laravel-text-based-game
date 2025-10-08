@@ -5,21 +5,21 @@ namespace App\Filters;
 use Illuminate\Http\Request;
 
 /**
- * Класс фильтра на основе запроса.
+ * Request-based filter class.
  */
 class RequestQueryFilter extends AbstractQueryFilter
 {
     /**
-     * Запрос.
+     * Request.
      *
      * @var Request
      */
     public Request $request;
 
     /**
-     * Конструктор.
+     * Constructor.
      *
-     * @param Request $request Запрос
+     * @param Request $request Request
      */
     public function __construct(Request $request)
     {
@@ -27,7 +27,7 @@ class RequestQueryFilter extends AbstractQueryFilter
     }
 
     /**
-     * Возвращает массив фильтров.
+     * Returns array of filters.
      *
      * @return array
      */

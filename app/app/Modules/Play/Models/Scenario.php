@@ -8,10 +8,10 @@ use App\Modules\City\Factories\CityFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Модель сценария.
+ * Scenario model.
  *
- * @property int $id Идентификатор города
- * @property string $name Название города
+ * @property int $id Scenario identifier
+ * @property string $name Scenario name
  */
 class Scenario extends BaseModel
 {
@@ -20,7 +20,7 @@ class Scenario extends BaseModel
         HasRemovableGlobalScopes;
 
     /**
-     * Заполняемые поля.
+     * Fillable fields.
      *
      * @var array
      */
@@ -40,14 +40,14 @@ class Scenario extends BaseModel
     ];
 
     /**
-     * Приводимые поля.
+     * Cast fields.
      *
      * @var array
      */
     protected $casts = [];
 
     /**
-     * Создает экземпляр фабрики.
+     * Creates a factory instance.
      *
      * @return CityFactory
      */

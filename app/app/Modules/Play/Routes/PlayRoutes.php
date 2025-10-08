@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 class PlayRoutes
 {
     /**
-     * Регистрация роутов.
+     * Route registration.
      */
     public static function register(): void
     {

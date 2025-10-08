@@ -20,7 +20,7 @@ services:
       - ./app:/var/www
       - ./docker-files/php/local.ini:/usr/local/etc/php/conf.d/local.ini
       - ./docker-files/php/php.ini-development:/usr/local/etc/php/php.ini
-      - laravel_vendor:/var/www/vendor  # отдельный volume для vendor
+      - laravel_vendor:/var/www/vendor  # separate volume for vendor
       - laravel_logs:/var/www/storage/logs
       - laravel_cache:/var/www/bootstrap/cache
       - laravel_framework:/var/www/storage/framework
@@ -44,7 +44,7 @@ services:
     volumes:
       - ./app:/var/www
       - ./docker-files/nginx/conf.d/nginx.conf:/etc/nginx/nginx.conf
-      - laravel_vendor:/var/www/vendor  # отдельный volume для vendor
+      - laravel_vendor:/var/www/vendor  # separate volume for vendor
       - laravel_logs:/var/www/storage/logs
       - laravel_cache:/var/www/bootstrap/cache
       - laravel_framework:/var/www/storage/framework
