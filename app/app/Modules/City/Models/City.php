@@ -60,7 +60,12 @@ class City extends BaseModel
      *
      * @var array<string, string>
      */
-    protected $casts = [];
+    protected $casts = [
+        'is_dual_name' => 'boolean',
+        'is_capital' => 'boolean',
+        'population' => 'integer',
+        'year_founded' => 'integer',
+    ];
 
     /**
      * Creates a factory instance.
