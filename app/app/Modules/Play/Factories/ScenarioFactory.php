@@ -2,24 +2,24 @@
 
 namespace App\Modules\Play\Factories;
 
-use App\Modules\City\Models\City;
+use App\Modules\Play\Models\Scenario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * Scenario model factory.
- * 
+ *
  * Creates fake scenario data for testing and seeding.
  *
- * @extends Factory<City>
+ * @extends Factory<Scenario>
  */
 class ScenarioFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<City>
+     * @var class-string<Scenario>
      */
-    protected $model = City::class;
+    protected $model = Scenario::class;
 
     /**
      * Define the model's default state.
