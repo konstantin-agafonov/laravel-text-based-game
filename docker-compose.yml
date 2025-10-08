@@ -45,9 +45,9 @@ services:
       - ./app:/var/www
       - ./docker-files/nginx/conf.d/nginx.conf:/etc/nginx/nginx.conf
       - ./log/nginx/:/var/log/nginx
-      #- laravel_vendor:/var/www/vendor
-      #- laravel_cache:/var/www/bootstrap/cache
-      #- laravel_framework:/var/www/storage/framework
+      - laravel_vendor:/var/www/vendor
+      - laravel_cache:/var/www/bootstrap/cache
+      - laravel_framework:/var/www/storage/framework
       - laravel_storage_public:/var/www/storage/app/public
     networks:
       - app-network
