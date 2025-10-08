@@ -9,7 +9,11 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// City routes
-CityRoutes::register();
+// API v1 routes
+Route::prefix('v1')->as('v1.')->group(function () {
+    // City routes
+    CityRoutes::register();
 
-PlayRoutes::register();
+    // Play routes
+    PlayRoutes::register();
+});

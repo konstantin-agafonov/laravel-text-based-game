@@ -19,6 +19,8 @@ class PlayRoutes
      */
     public static function register(): void
     {
-        Route::get('play', [PlayController::class, 'play'])->name('play');
+        Route::name('play.')->group(function () {
+            Route::get('play', [PlayController::class, 'play'])->name('index');
+        });
     }
 }

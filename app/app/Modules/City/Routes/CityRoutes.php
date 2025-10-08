@@ -19,7 +19,13 @@ class CityRoutes
      */
     public static function register(): void
     {
-        Route::apiResource('city', CityController::class)
-            ->only(['index', 'show']);
+        Route::name('city.')->group(function () {
+            Route::apiResource('city', CityController::class)
+                ->only(['index', 'show'])
+                ->names([
+                    'index' => 'index',
+                    'show' => 'show',
+                ]);
+        });
     }
 }
