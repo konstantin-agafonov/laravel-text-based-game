@@ -9,15 +9,18 @@ use morphos\Russian\GeographicalNamesInflection;
 /**
  * City resource class.
  *
+ * Transforms city model data into API-friendly format.
+ *
  * @property int $id City identifier
  * @property string $name City name
  */
 class CityResource extends JsonResource
 {
     /**
-     * Transforms resource to array.
+     * Transform the resource into an array.
      *
-     * @return array<string, mixed>
+     * @param Request $request The HTTP request instance
+     * @return array<string, mixed> The transformed city data
      */
     public function toArray(Request $request): array
     {

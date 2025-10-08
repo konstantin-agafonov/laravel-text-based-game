@@ -4,14 +4,19 @@ namespace App\Modules\Play\Services;
 
 use App\Modules\Play\Data\PlayData;
 
+/**
+ * Play service.
+ * 
+ * Handles business logic for game play operations.
+ */
 class PlayService
 {
 
     /**
-     * Forms and returns response to player's move
+     * Process a player's move and return game response.
      *
-     * @param PlayData $playData
-     * @return array
+     * @param PlayData $playData The player's move data
+     * @return array<string, mixed> The game response data
      */
     public function play(PlayData $playData): array
     {

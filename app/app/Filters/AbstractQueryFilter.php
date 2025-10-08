@@ -5,50 +5,52 @@ namespace App\Filters;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Query-based filter class.
+ * Abstract query filter class.
+ * 
+ * Provides base functionality for implementing query filters.
  */
 abstract class AbstractQueryFilter implements FilterInterface
 {
     /**
-     * Builder.
+     * The query builder instance.
      *
      * @var Builder
      */
     protected Builder $builder;
 
     /**
-     * Parameter delimiter.
+     * The delimiter used for parsing parameter values.
      *
      * @var string
      */
     private string $paramsDelimiter = ',';
 
     /**
-     * Date segment delimiter.
+     * The delimiter used for parsing date segments.
      *
      * @var string
      */
     private string $dateDelimiter = '-';
 
     /**
-     * Date format.
+     * The format used for date parsing.
      *
      * @var string
      */
     private string $dateFormat = "Y-m-d";
 
     /**
-     * Returns array of filters.
+     * Get the array of filters to apply.
      *
-     * @return array
+     * @return array<string, mixed> The filter parameters
      */
     abstract public function filters(): array;
 
     /**
-     * Applies filters.
+     * Apply all filters to the query builder.
      *
-     * @param Builder $builder
-     * @return Builder
+     * @param Builder $builder The query builder instance
+     * @return Builder The modified query builder
      */
     public function apply(Builder $builder): Builder
     {
@@ -66,11 +68,11 @@ abstract class AbstractQueryFilter implements FilterInterface
     }
 
     /**
-     * Formats dates.
+     * Format and apply date range filter.
      *
-     * @param string $date
-     * @param string $field
-     * @return Builder
+     * @param string $date The date string to parse
+     * @param string $field The database field name
+     * @return Builder The modified query builder
      */
     protected function formatDateRange(string $date, string $field): Builder
     {
@@ -83,10 +85,10 @@ abstract class AbstractQueryFilter implements FilterInterface
     }
 
     /**
-     * Converts parameters to array.
+     * Convert a parameter string to an array.
      *
-     * @param $param
-     * @return array
+     * @param string $param The parameter string
+     * @return array<string> The parameter array
      */
     protected function paramToArray($param): array
     {

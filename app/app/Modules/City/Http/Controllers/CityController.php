@@ -12,13 +12,16 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Cities controller.
+ * 
+ * Handles HTTP requests for city-related operations including
+ * listing, viewing, creating, updating, and deleting cities.
  */
 class CityController extends Controller
 {
     /**
-     * Constructor.
+     * Create a new controller instance.
      *
-     * @param CityService $service City service
+     * @param CityService $service The city service instance
      */
     public function __construct(
         private readonly CityService $service
@@ -27,9 +30,9 @@ class CityController extends Controller
     }
 
     /**
-     * Returns cities.
+     * Display a listing of cities.
      *
-     * @return CityCollection
+     * @return CityCollection A collection of city resources
      */
     public function index(): CityCollection
     {
@@ -37,10 +40,10 @@ class CityController extends Controller
     }
 
     /**
-     * Returns city resource.
+     * Display the specified city.
      *
-     * @param City $city
-     * @return CityResource
+     * @param City $city The city model instance
+     * @return CityResource The city resource
      */
     public function show(City $city): CityResource
     {
@@ -48,7 +51,10 @@ class CityController extends Controller
     }
 
     /**
-     * Create a new city.
+     * Store a newly created city.
+     *
+     * @param Request $request The HTTP request containing city data
+     * @return \Illuminate\Http\JsonResponse JSON response with created city data
      */
     public function store(Request $request)
     {
@@ -73,7 +79,11 @@ class CityController extends Controller
     }
 
     /**
-     * Update city data.
+     * Update the specified city.
+     *
+     * @param Request $request The HTTP request containing updated city data
+     * @param City $city The city model instance to update
+     * @return \Illuminate\Http\JsonResponse JSON response with updated city data
      */
     public function update(Request $request, City $city)
     {
@@ -98,7 +108,10 @@ class CityController extends Controller
     }
 
     /**
-     * Delete city.
+     * Remove the specified city.
+     *
+     * @param City $city The city model instance to delete
+     * @return \Illuminate\Http\JsonResponse Empty JSON response with 204 status
      */
     public function destroy(City $city)
     {

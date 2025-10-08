@@ -3,21 +3,23 @@
 namespace App\Filters;
 
 /**
- * Parameter-based filter class
+ * Parameter-based filter class.
+ * 
+ * Filters queries based on provided parameters array.
  */
 class ParamsQueryFilter extends AbstractQueryFilter
 {
     /**
-     * Parameters.
+     * The filter parameters.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     private array $params;
 
     /**
-     * Constructor.
+     * Create a new parameter-based filter instance.
      *
-     * @param array $params Parameters
+     * @param array<string, mixed> $params The filter parameters
      */
     public function __construct(array $params)
     {
@@ -25,9 +27,9 @@ class ParamsQueryFilter extends AbstractQueryFilter
     }
 
     /**
-     * Returns array of filters.
+     * Get the filter parameters.
      *
-     * @return array
+     * @return array<string, mixed> The filter parameters
      */
     public function filters(): array
     {

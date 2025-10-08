@@ -7,19 +7,21 @@ use App\Seeders\BaseSeeder;
 use Illuminate\Support\Facades\File;
 
 /**
- * Game data creation class.
+ * Play seeder class.
+ * 
+ * Seeds the play data from JSON file.
  */
 class PlaySeeder extends BaseSeeder
 {
     /**
-     * Model name.
+     * The model class name to seed.
      *
      * @var string
      */
     public string $model = City::class;
 
     /**
-     * Creates records.
+     * Create play records from JSON data.
      *
      * @return void
      */

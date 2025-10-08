@@ -10,6 +10,8 @@ use Tests\Unit\AssertModelTrait;
 
 /**
  * City model test.
+ * 
+ * Tests the City model functionality including table name and relationships.
  *
  * @see City
  */
@@ -18,14 +20,14 @@ class CityTest extends AbstractUnitTestCase
     use AssertModelTrait;
 
     /**
-     * Model name.
+     * The model class name to test.
      *
      * @var string
      */
     private string $model = City::class;
 
     /**
-     * Table name test.
+     * Test the table name method.
      *
      * @covers \App\Modules\City\Models\City::getTable()
      * @return void
@@ -39,9 +41,10 @@ class CityTest extends AbstractUnitTestCase
     }
 
     /**
-     * Tours relationship test.
+     * Test the tours relationship.
      *
      * @covers \App\Modules\City\Models\City::tours
+     * @return void
      */
     public function testTours(): void
     {
@@ -55,7 +58,7 @@ class CityTest extends AbstractUnitTestCase
     }
 
     /**
-     * Offers relationship test
+     * Test the offers relationship.
      *
      * @covers \App\Modules\City\Models\City::offers
      * @return void

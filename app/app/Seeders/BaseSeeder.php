@@ -6,25 +6,27 @@ use Illuminate\Database\Seeder;
 
 /**
  * Base seeder class.
+ * 
+ * Provides common functionality for all application seeders.
  */
 abstract class BaseSeeder extends Seeder
 {
     /**
-     * Model name.
+     * The model class name to seed.
      *
      * @var string
      */
     public string $model;
 
     /**
-     * Flag to clear table at the beginning of seeder work.
+     * Whether to clear the table before seeding.
      *
      * @var bool
      */
     public bool $clear = false;
 
     /**
-     * Runs execution.
+     * Run the database seeders.
      *
      * @return void
      */
@@ -37,7 +39,7 @@ abstract class BaseSeeder extends Seeder
     }
 
     /**
-     * Creates records.
+     * Create the model records.
      *
      * @return void
      */
@@ -47,7 +49,7 @@ abstract class BaseSeeder extends Seeder
     }
 
     /**
-     * Clears seeds.
+     * Clear existing records from the table.
      *
      * @return void
      */

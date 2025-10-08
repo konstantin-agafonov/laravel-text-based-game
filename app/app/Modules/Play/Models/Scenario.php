@@ -10,8 +10,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Scenario model.
  *
+ * Represents a game scenario with geographical and administrative information.
+ *
  * @property int $id Scenario identifier
  * @property string $name Scenario name
+ * @property string|null $name_alt Alternative scenario name
+ * @property string|null $okato OKATO code (Russian classification)
+ * @property string|null $oktmo OKTMO code (Russian classification)
+ * @property bool|null $is_dual_name Whether the scenario has dual naming
+ * @property bool|null $is_capital Whether the scenario is a capital
+ * @property string|null $zip Postal code
+ * @property string|null $population Scenario population
+ * @property string|null $year_founded Year the scenario was founded
+ * @property string|null $name_en English name of the scenario
+ * @property string|null $lat Latitude coordinate
+ * @property string|null $lon Longitude coordinate
+ * @property \Carbon\Carbon $created_at Creation timestamp
+ * @property \Carbon\Carbon $updated_at Last update timestamp
+ * @property \Carbon\Carbon|null $deleted_at Soft deletion timestamp
  */
 class Scenario extends BaseModel
 {
@@ -20,9 +36,9 @@ class Scenario extends BaseModel
         HasRemovableGlobalScopes;
 
     /**
-     * Fillable fields.
+     * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
@@ -40,9 +56,9 @@ class Scenario extends BaseModel
     ];
 
     /**
-     * Cast fields.
+     * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [];
 

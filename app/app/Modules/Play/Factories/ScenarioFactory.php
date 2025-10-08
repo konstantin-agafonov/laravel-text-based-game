@@ -7,20 +7,24 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * Scenario model factory.
+ * 
+ * Creates fake scenario data for testing and seeding.
+ *
+ * @extends Factory<City>
  */
 class ScenarioFactory extends Factory
 {
     /**
-     * Model name.
+     * The name of the factory's corresponding model.
      *
-     * @var string
+     * @var class-string<City>
      */
     protected $model = City::class;
 
     /**
-     * Model field definition.
+     * Define the model's default state.
      *
-     * @return array
+     * @return array<string, mixed> The default attributes for the model
      */
     public function definition(): array
     {

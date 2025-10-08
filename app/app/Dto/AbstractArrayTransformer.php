@@ -7,16 +7,18 @@ use Throwable;
 
 /**
  * Abstract array to DTO transformer.
+ * 
+ * Provides base functionality for transforming arrays to DTOs.
  */
 abstract class AbstractArrayTransformer
 {
     /**
-     * Check array fields.
+     * Assert that a field exists in the array.
      *
-     * @param string $name Field name
-     * @param array $data Array to check
+     * @param string $name The field name to check
+     * @param array<string, mixed> $data The array to check
      * @return void
-     * @throws Throwable
+     * @throws Throwable If the field does not exist
      */
     public function assertFieldExist(string $name, array $data): void
     {

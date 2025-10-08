@@ -6,20 +6,22 @@ use Illuminate\Http\Request;
 
 /**
  * Request-based filter class.
+ * 
+ * Filters queries based on HTTP request query parameters.
  */
 class RequestQueryFilter extends AbstractQueryFilter
 {
     /**
-     * Request.
+     * The HTTP request instance.
      *
      * @var Request
      */
     public Request $request;
 
     /**
-     * Constructor.
+     * Create a new request-based filter instance.
      *
-     * @param Request $request Request
+     * @param Request $request The HTTP request instance
      */
     public function __construct(Request $request)
     {
@@ -27,9 +29,9 @@ class RequestQueryFilter extends AbstractQueryFilter
     }
 
     /**
-     * Returns array of filters.
+     * Get the filter parameters from request query.
      *
-     * @return array
+     * @return array<string, mixed> The filter parameters
      */
     public function filters(): array
     {

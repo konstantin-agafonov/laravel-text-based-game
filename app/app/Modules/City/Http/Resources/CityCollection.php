@@ -6,14 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 /**
- * City collection.
+ * City collection resource.
+ *
+ * Transforms a collection of city models into API-friendly format.
  */
 class CityCollection extends ResourceCollection
 {
     /**
-     * Transforms resource collection to array.
+     * Transform the resource collection into an array.
      *
-     * @return array<int|string, mixed>
+     * @param Request $request The HTTP request instance
+     * @return array<int|string, mixed> The transformed collection data
      */
     public function toArray(Request $request): array
     {

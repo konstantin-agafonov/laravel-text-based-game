@@ -6,16 +6,18 @@ use Illuminate\Support\Collection;
 
 /**
  * Model options trait.
+ * 
+ * Provides functionality for generating option collections from models.
  */
 trait HasOptions
 {
     /**
-     * Returns model options as collection.
+     * Get model options as a collection.
      *
-     * @param bool $all All fields selection availability
-     * @param string $fieldId Field identifier
-     * @param string $fieldName Field name
-     * @return Collection
+     * @param bool $all Whether to include an "All" option
+     * @param string $fieldId The field to use as the key
+     * @param string $fieldName The field to use as the value
+     * @return Collection The options collection
      */
     public static function options(
         bool $all = false,

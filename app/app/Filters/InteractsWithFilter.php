@@ -6,17 +6,19 @@ use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Filter trait for models.
+ * 
+ * Provides filtering functionality to models.
  *
  * @method static Builder filtered(FilterInterface $filter)
  */
 trait InteractsWithFilter
 {
     /**
-     * Filter.
+     * Apply a filter to the query builder.
      *
-     * @param Builder $builder Query
-     * @param FilterInterface $filter Filter
-     * @return Builder
+     * @param Builder $builder The query builder instance
+     * @param FilterInterface $filter The filter to apply
+     * @return Builder The modified query builder
      */
     public function scopeFiltered(Builder $builder, FilterInterface $filter): Builder
     {

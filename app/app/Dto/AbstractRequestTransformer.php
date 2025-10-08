@@ -7,17 +7,19 @@ use RuntimeException;
 use Throwable;
 
 /**
- * Abstract transformer.
+ * Abstract request transformer.
+ * 
+ * Provides base functionality for transforming HTTP requests to DTOs.
  */
 abstract class AbstractRequestTransformer
 {
     /**
-     * Check request fields.
+     * Assert that a field exists in the request.
      *
-     * @param string $name Field name
-     * @param Request $request Request
+     * @param string $name The field name to check
+     * @param Request $request The HTTP request instance
      * @return void
-     * @throws Throwable
+     * @throws Throwable If the field does not exist
      */
     public function assertFieldExist(string $name, Request $request): void
     {
@@ -28,13 +30,13 @@ abstract class AbstractRequestTransformer
     }
 
     /**
-     * Check array of fields.
+     * Assert that multiple fields exist in the request array.
      *
-     * @param string $fieldName Array name
-     * @param array $keys Field names
-     * @param Request $request Request
+     * @param string $fieldName The array field name
+     * @param array<string> $keys The field names to check
+     * @param Request $request The HTTP request instance
      * @return void
-     * @throws Throwable
+     * @throws Throwable If any field does not exist
      */
     public function assertFieldArrayExist(string $fieldName, array $keys, Request $request): void
     {

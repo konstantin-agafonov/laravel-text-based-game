@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
 /**
- * City relationships trait.
+ * Scenario relationships trait.
+ * 
+ * Defines relationships for the Scenario model.
  *
  * @property Collection<Tour> $tours Tours
  * @property Collection<Offer> $offers Offers
@@ -15,9 +17,9 @@ use Illuminate\Support\Collection;
 trait ScenarioRelationsTrait
 {
     /**
-     * Returns relationship with tours.
+     * Get the tours relationship.
      *
-     * @return HasMany
+     * @return HasMany The tours relationship
      */
     /*public function tours(): HasMany
     {
@@ -29,9 +31,9 @@ trait ScenarioRelationsTrait
     }*/
 
     /**
-     * Returns relationship with offers.
+     * Get the offers relationship.
      *
-     * @return BelongsToMany
+     * @return BelongsToMany The offers relationship
      */
     /*public  function offers(): BelongsToMany
     {

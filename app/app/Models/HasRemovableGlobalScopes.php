@@ -8,13 +8,15 @@ use Illuminate\Support\Arr;
 
 /**
  * Removable global scopes trait.
+ * 
+ * Provides functionality for removing global scopes from models.
  */
 trait HasRemovableGlobalScopes
 {
     /**
-     * Remove one scope.
+     * Remove a single global scope.
      *
-     * @param Scope|string $scope Scope
+     * @param Scope|string $scope The scope to remove
      * @return void
      */
     public static function withoutGlobalScope(Scope|string $scope): void
@@ -29,9 +31,9 @@ trait HasRemovableGlobalScopes
     }
 
     /**
-     * Remove multiple scopes.
+     * Remove multiple global scopes.
      *
-     * @param array $scopes Scopes
+     * @param array<Scope|string> $scopes The scopes to remove
      * @return void
      */
     public static function withoutGlobalScopes(array $scopes = []): void

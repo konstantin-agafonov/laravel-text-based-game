@@ -4,13 +4,15 @@ namespace App\Models;
 
 /**
  * Table name trait.
+ * 
+ * Provides functionality for getting model table names.
  */
 trait TableNameTrait
 {
     /**
-     * Returns table name.
+     * Get the table name for the model.
      *
-     * @return string
+     * @return string The table name
      */
     public static function getTableName(): string
     {

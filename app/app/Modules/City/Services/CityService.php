@@ -7,14 +7,16 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * City service.
+ * 
+ * Handles business logic for city-related operations.
  */
 class CityService
 {
 
     /**
-     * Returns cities.
+     * Get a paginated list of cities.
      *
-     * @return LengthAwarePaginator
+     * @return LengthAwarePaginator Paginated collection of cities
      */
     public function getCities(): LengthAwarePaginator
     {

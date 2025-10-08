@@ -7,19 +7,21 @@ use App\Seeders\BaseSeeder;
 use Illuminate\Support\Facades\File;
 
 /**
- * City creation class.
+ * City seeder class.
+ * 
+ * Seeds the cities table with data from JSON file.
  */
 class CitySeeder extends BaseSeeder
 {
     /**
-     * Model name.
+     * The model class name to seed.
      *
      * @var string
      */
     public string $model = City::class;
 
     /**
-     * Creates records.
+     * Create city records from JSON data.
      *
      * @return void
      */

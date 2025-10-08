@@ -6,21 +6,23 @@ use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Filter interface.
+ * 
+ * Defines the contract for query filter implementations.
  */
 interface FilterInterface
 {
     /**
-     * Returns set of parameters for filtering.
+     * Get the filter parameters.
      *
-     * @return array
+     * @return array<string, mixed> The filter parameters
      */
     public function filters(): array;
 
     /**
-     * Applies filter.
+     * Apply the filter to the query builder.
      *
-     * @param Builder $builder
-     * @return Builder
+     * @param Builder $builder The query builder instance
+     * @return Builder The modified query builder
      */
     public function apply(Builder $builder): Builder;
 }
