@@ -13,14 +13,21 @@ RUN apt update && \
         libfreetype6-dev \
         locales libpq-dev \
         jpegoptim optipng pngquant gifsicle \
-        vim unzip git curl \
-    && apt clean && rm -rf /var/lib/apt/lists/*
+        vim unzip git curl && \
+    pecl install xdebug && \
+    apt clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
 RUN docker-php-ext-install zip pdo_pgsql exif
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-enable exif
+
+# Установка Xdebug
+RUN docker-php-ext-enable xdebug
+
+# Копируем конфиг Xdebug
+COPY ./docker-files/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- \
