@@ -39,10 +39,10 @@ RUN groupadd -g 1000 www && \
     useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy only dependency files for cache
-COPY ./app/composer.json ./app/composer.lock /var/www/
+#COPY ./app/composer.json ./app/composer.lock /var/www/
 
 # Install dependencies WITHOUT scripts (artisan not yet available)
-RUN composer install --optimize-autoloader --no-scripts
+#RUN composer install --optimize-autoloader --no-scripts
 
 # Now copy the entire project
 COPY --chown=www:www ./app /var/www
@@ -55,7 +55,7 @@ COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Set permissions
-RUN chown -R www:www /var/www
+#RUN chown -R www:www /var/www
 
 USER www
 

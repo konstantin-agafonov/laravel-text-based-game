@@ -21,7 +21,7 @@ services:
       - ./docker-files/php/local.ini:/usr/local/etc/php/conf.d/local.ini
       - ./docker-files/php/php.ini-development:/usr/local/etc/php/php.ini
       - ${APP_LOG_PATH}:/var/www/storage/logs
-      - laravel_vendor:/var/www/vendor
+      #- laravel_vendor:/var/www/vendor
       - laravel_cache:/var/www/bootstrap/cache
       - laravel_framework:/var/www/storage/framework
       - laravel_storage_public:/var/www/storage/app/public
@@ -45,7 +45,7 @@ services:
       - ./app:/var/www
       - ./docker-files/nginx/conf.d/nginx.conf:/etc/nginx/nginx.conf
       - ./log/nginx/:/var/log/nginx
-      - laravel_vendor:/var/www/vendor
+      #- laravel_vendor:/var/www/vendor
       - laravel_cache:/var/www/bootstrap/cache
       - laravel_framework:/var/www/storage/framework
       - laravel_storage_public:/var/www/storage/app/public
@@ -93,8 +93,8 @@ volumes:
     driver: local
   pgadmin_data:
     driver: local
-  laravel_vendor:
-    driver: local
+  #laravel_vendor:
+  #  driver: local
   laravel_cache:
     driver: local
   laravel_framework:
