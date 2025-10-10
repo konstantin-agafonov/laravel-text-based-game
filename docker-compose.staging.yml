@@ -3,4 +3,4 @@ services:
     environment:
       APP_ENV: staging
       APP_DEBUG: false
-      APP_URL: http://ltc.kagafonov.beget.tech:8100
+      APP_URL: http://quest.kagafonov.beget.tech:8100

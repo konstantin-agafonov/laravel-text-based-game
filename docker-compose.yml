@@ -2,7 +2,7 @@ services:
 
   app:
     build:
-      context: .
+      context: ./docker/php
       dockerfile: Dockerfile
     container_name: app
     restart: unless-stopped
@@ -16,38 +16,22 @@ services:
       APP_KEY: ${APP_KEY}
       APP_DEBUG: ${APP_DEBUG}
       APP_URL: ${APP_URL}
+      XDEBUG_SESSION: ${XDEBUG_SESSION}
     volumes:
-      - ./app:/var/www
-      - ./docker-files/php/local.ini:/usr/local/etc/php/conf.d/local.ini
-      - ./docker-files/php/php.ini-development:/usr/local/etc/php/php.ini
-      - laravel_vendor:/var/www/vendor  # отдельный volume для vendor
-      - laravel_logs:/var/www/storage/logs
+      - .:/var/www
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./docker/php/php.ini-development:/usr/local/etc/php/php.ini
+      - ${APP_LOG_PATH}:/var/www/storage/logs
+      - ./log/xdebug/xdebug.log:/var/log/xdebug.log
       - laravel_cache:/var/www/bootstrap/cache
       - laravel_framework:/var/www/storage/framework
       - laravel_storage_public:/var/www/storage/app/public
     networks:
       - app-network
 
-  parser:
-    container_name: parser
-    build:
-      context: ./parser_flights
-      dockerfile: Dockerfile
-    ports:
-      - "${PARSER_PORT}:8000"
-    env_file:
-      - .env
-    volumes:
-      - ./parser_flights/:/srv/parser/
-    depends_on:
-      db:
-        condition: service_healthy
-    networks:
-      - app-network
-
   webserver:
     build:
-      context: ./docker-files/nginx
+      context: ./docker/nginx
       dockerfile: Dockerfile
     container_name: webserver
     restart: unless-stopped
@@ -59,10 +43,9 @@ services:
       - "8100:80"
       - "8143:443"
     volumes:
-      - ./app:/var/www
-      - ./docker-files/nginx/conf.d/nginx.conf:/etc/nginx/nginx.conf
-      - laravel_vendor:/var/www/vendor  # отдельный volume для vendor
-      - laravel_logs:/var/www/storage/logs
+      - .:/var/www
+      - ./docker/nginx/conf.d/nginx.conf:/etc/nginx/nginx.conf
+      - ./log/nginx/:/var/log/nginx
       - laravel_cache:/var/www/bootstrap/cache
       - laravel_framework:/var/www/storage/framework
       - laravel_storage_public:/var/www/storage/app/public
@@ -76,10 +59,14 @@ services:
     container_name: db
     restart: unless-stopped
     tty: true
-    env_file:
-      - .env
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_PORT: ${DB_PORT}
+      POSTGRES_HOST: ${DB_HOST}
     ports:
-      - "${POSTGRES_PORT}:5432"
+      - "${DB_PORT}:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
     networks:
@@ -109,10 +96,6 @@ volumes:
   db_data:
     driver: local
   pgadmin_data:
-    driver: local
-  laravel_vendor:
-    driver: local
-  laravel_logs:
     driver: local
   laravel_cache:
     driver: local
