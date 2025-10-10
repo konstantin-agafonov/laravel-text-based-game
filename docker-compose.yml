@@ -2,7 +2,7 @@ services:
 
   app:
     build:
-      context: .
+      context: ./docker/php
       dockerfile: Dockerfile
     container_name: app
     restart: unless-stopped
