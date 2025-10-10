@@ -27,7 +27,9 @@ RUN docker-php-ext-enable exif
 RUN docker-php-ext-enable xdebug
 
 # Копируем конфиг Xdebug
-COPY ./docker-files/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+COPY ./docker/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+
+RUN touch /var/log/xdebug.log
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- \
@@ -45,13 +47,13 @@ RUN groupadd -g 1000 www && \
 #RUN composer install --optimize-autoloader --no-scripts
 
 # Now copy the entire project
-COPY --chown=www:www ./app /var/www
+COPY --chown=www:www . /var/www
 
 # Now run composer again to execute scripts (artisan is now available)
 RUN composer install --optimize-autoloader
 
 # Copy entrypoint
-COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY ./docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Set permissions
