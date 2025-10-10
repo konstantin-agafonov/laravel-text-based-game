@@ -1,9 +1,0 @@
-{
-    "field": {
-        "B2": {
-            "description": "You are at your workshop in the repair pit. Your are working on an old Porshe car. There is a gate for cars and a back door for personnel.",
-            "short_description": "You are working on a car in your workshop.",
-            "directions": ["west", "east"]
-        }
-    }
-}
