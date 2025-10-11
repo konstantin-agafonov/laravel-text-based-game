@@ -3,7 +3,6 @@
 namespace App\Modules\Play\Data;
 
 use Spatie\LaravelData\Attributes\Validation\Exists;
-use Spatie\LaravelData\Attributes\Validation\Unique;
 use Spatie\LaravelData\Data;
 
 /**
@@ -23,10 +22,9 @@ class GameData extends Data
      * @param int $user_id Game author user ID
      */
     public function __construct(
-        #[Unique('games', 'name, user_id')]
-        public string $name,
+        public readonly string $name,
         #[Exists('users')]
-        public int $user_id,
+        public readonly int $user_id,
     ) {
     }
 }

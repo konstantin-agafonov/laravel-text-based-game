@@ -16,9 +16,9 @@ use Illuminate\Support\Collection;
 trait UserRelationsTrait
 {
     /**
-     * Get the tours relationship.
+     * Get the games relationship.
      *
-     * @return HasMany The tours relationship
+     * @return HasMany The games relationship
      */
     public function games(): HasMany
     {
