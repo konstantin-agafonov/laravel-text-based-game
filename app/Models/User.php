@@ -17,7 +17,8 @@ class User extends Authenticatable
         Notifiable,
         HasRoles,
         HasApiTokens,
-        UserRelationsTrait;
+        UserRelationsTrait,
+        TableNameTrait;
 
     /**
      * The attributes that are mass assignable.
