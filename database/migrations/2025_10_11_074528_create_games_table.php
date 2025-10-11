@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name')->index()->comment('Game name');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->unique(['user_id', 'name']);
         });

@@ -22,6 +22,13 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('secret'),
             ]
         );
+        User::updateOrCreate(
+            ['email' => 'second@example.com'],
+            [
+                'name' => 'Second',
+                'password' => Hash::make('secret'),
+            ]
+        );
     }
 }
 

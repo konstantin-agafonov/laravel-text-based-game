@@ -9,7 +9,6 @@ use App\Modules\Play\Http\Resources\GameResource;
 use App\Modules\Play\Models\Game;
 use App\Modules\Play\Services\GameService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -75,7 +74,7 @@ class GameController extends Controller
      */
     public function update(GameData $gameData, Game $game): GameResource
     {
-        return GameResource::make($game->update($gameData));
+        return GameResource::make($game->update($gameData->toArray()));
     }
 
     /**
