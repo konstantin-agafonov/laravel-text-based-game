@@ -9,6 +9,7 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    target-branch: "dev"
 
   # Enable version updates for Docker
   - package-ecosystem: "docker"
@@ -17,6 +18,7 @@ updates:
     # Check for updates once a week
     schedule:
       interval: "weekly"
+    target-branch: "dev"
 
   # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
@@ -25,3 +27,4 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    target-branch: "dev"
