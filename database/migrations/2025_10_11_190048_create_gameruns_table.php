@@ -24,6 +24,8 @@ return new class extends Migration
                 ->foreignIdFor(User::class)
                 ->constrained(User::getTableName())
             ;
+            $table->timestamp('started_at')->useCurrent()->comment('Game run started at');
+            $table->timestamp('finished_at')->nullable()->comment('Game run finished at');
             $table->timestamps();
             $table->softDeletes();
         });
