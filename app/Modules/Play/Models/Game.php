@@ -4,7 +4,6 @@ namespace App\Modules\Play\Models;
 
 use App\Models\BaseModel;
 use App\Models\HasRemovableGlobalScopes;
-use App\Modules\Play\Factories\CityFactory;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -41,14 +40,4 @@ class Game extends BaseModel
      * @var array<string, string>
      */
     protected $casts = [];
-
-    /**
-     * Creates a factory instance.
-     *
-     * @return CityFactory
-     */
-    protected static function newFactory(): CityFactory
-    {
-        return CityFactory::new();
-    }
 }

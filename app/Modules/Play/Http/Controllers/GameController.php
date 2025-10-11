@@ -60,7 +60,7 @@ class GameController extends Controller
     public function store(GameData $gameData): JsonResponse
     {
         return response()->json(
-            GameResource::make(Game::create($gameData)),
+            GameResource::make(Game::create($gameData->toArray())),
             Response::HTTP_CREATED
         );
     }

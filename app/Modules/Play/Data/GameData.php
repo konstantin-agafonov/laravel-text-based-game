@@ -2,6 +2,7 @@
 
 namespace App\Modules\Play\Data;
 
+use App\Models\User;
 use Spatie\LaravelData\Attributes\Validation\Exists;
 use Spatie\LaravelData\Data;
 
@@ -23,7 +24,7 @@ class GameData extends Data
      */
     public function __construct(
         public readonly string $name,
-        #[Exists('users')]
+        #[Exists(User::class, 'id')]
         public readonly int $user_id,
     ) {
     }
