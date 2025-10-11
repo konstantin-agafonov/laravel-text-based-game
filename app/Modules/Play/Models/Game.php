@@ -4,7 +4,7 @@ namespace App\Modules\Play\Models;
 
 use App\Models\BaseModel;
 use App\Models\HasRemovableGlobalScopes;
-use App\Modules\City\Factories\CityFactory;
+use App\Modules\Play\Factories\CityFactory;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Game extends BaseModel
 {
     use GameRelationsTrait,
+        GameScopesTrait,
         HasFactory,
         HasRemovableGlobalScopes;
 

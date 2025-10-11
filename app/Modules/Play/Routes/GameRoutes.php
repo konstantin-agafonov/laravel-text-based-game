@@ -2,7 +2,7 @@
 
 namespace App\Modules\Play\Routes;
 
-use App\Modules\City\Http\Controllers\CityController;
+use App\Modules\Play\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -20,10 +20,13 @@ class GameRoutes
     public static function register(): void
     {
         Route::name('game.')->group(function () {
-            Route::apiResource('game', CityController::class)
+            Route::apiResource('game', GameController::class)
                 ->names([
                     'index' => 'index',
                     'show' => 'show',
+                    'store' => 'store',
+                    'update' => 'update',
+                    'destroy' => 'destroy',
                 ]);
         });
     }
