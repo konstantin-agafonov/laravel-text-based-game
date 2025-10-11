@@ -17,8 +17,7 @@ on:
   push:
     branches: [ "dev" ]
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "dev" ]
+    branches-ignore: [ "master" ]
   schedule:
     - cron: '29 4 * * 1'
 
