@@ -54,12 +54,17 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"// Set X-XSRF-TOKEN header from cookie",
-							"//const xsrf = pm.collectionVariables.get('xsrf');",
-							"//console.log('xsrf=');",
-							"//console.log(xsrf);",
-							"//pm.request.headers.add({ key: 'X-XSRF-TOKEN', value: decodeURIComponent(xsrf) });",
-							""
+							"pm.sendRequest({",
+							"    url: pm.collectionVariables.get('url') + '/sanctum/csrf-cookie',",
+							"    method: \"GET\"",
+							"}, function(error, response, { cookies }) {",
+							"    if (error) {",
+							"        console.log(error);",
+							"        return;",
+							"    }",
+							"",
+							"    pm.collectionVariables.set('xsrf', cookies.get('XSRF-TOKEN'));",
+							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -94,7 +99,7 @@
 					"raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"secret\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8100/login?XDEBUG_SESSION_START=PHPSTORM",
+					"raw": "http://localhost:8100/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -102,12 +107,54 @@
 					"port": "8100",
 					"path": [
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Authenticated User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "{{url}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8100/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
 					],
-					"query": [
-						{
-							"key": "XDEBUG_SESSION_START",
-							"value": "PHPSTORM"
-						}
+					"port": "8100",
+					"path": [
+						"api",
+						"user"
 					]
 				}
 			},
@@ -151,63 +198,13 @@
 			"response": []
 		},
 		{
-			"name": "Get Authenticated User",
+			"name": "Create a game",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
 						"exec": [
 							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"accept": true
-				}
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8100/api/user",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8100",
-					"path": [
-						"api",
-						"user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8100/api/v1/city",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"pm.sendRequest({",
-							"     url: 'http://localhost:8100/sanctum/csrf-cookie',",
-							"     method: 'GET'",
-							" }, function(error, response, {cookies}) {",
-							"     if(!error){",
-							"         pm.environment.set('xsrf-cookie', cookies.get('XSRF-TOKEN').slice(0,-1))",
-							"     }    ",
-							"})"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -233,6 +230,55 @@
 				"auth": {
 					"type": "noauth"
 				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "{{url}}",
+						"type": "text"
+					},
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "{{xsrf}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Test game\",\n    \"user_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/v1/game",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Play move",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
 				"method": "GET",
 				"header": [
 					{
@@ -242,21 +288,29 @@
 					},
 					{
 						"key": "Referer",
-						"value": "http://localhost:8100",
+						"value": "{{url}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8100/api/v1/city",
-					"protocol": "http",
+					"raw": "{{url}}/api/v1/play?move=Some move&",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "8100",
 					"path": [
 						"api",
 						"v1",
-						"city"
+						"play"
+					],
+					"query": [
+						{
+							"key": "move",
+							"value": "Some move"
+						},
+						{
+							"key": "",
+							"value": null
+						}
 					]
 				}
 			},
@@ -270,17 +324,6 @@
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
-					"pm.sendRequest({",
-					"    url: pm.collectionVariables.get('url') + '/sanctum/csrf-cookie',",
-					"    method: \"GET\"",
-					"}, function(error, response, { cookies }) {",
-					"    if (error) {",
-					"        console.log(error);",
-					"        return;",
-					"    }",
-					"",
-					"    pm.collectionVariables.set('xsrf', cookies.get('XSRF-TOKEN'));",
-					"})",
 					""
 				]
 			}
