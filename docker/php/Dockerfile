@@ -40,12 +40,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 RUN groupadd -g 1000 www && \
     useradd -u 1000 -ms /bin/bash -g www www
 
-# Copy only dependency files for cache
-#COPY ./app/composer.json ./app/composer.lock /var/www/
-
-# Install dependencies WITHOUT scripts (artisan not yet available)
-#RUN composer install --optimize-autoloader --no-scripts
-
 # Now copy the entire project
 COPY --chown=www:www . /var/www
 
