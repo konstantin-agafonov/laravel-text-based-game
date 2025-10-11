@@ -2,24 +2,24 @@
 
 namespace App\Modules\Play\Factories;
 
-use App\Modules\Play\Models\Scenario;
+use App\Modules\Play\Models\Game;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * Scenario model factory.
+ * Game model factory.
  *
  * Creates fake scenario data for testing and seeding.
  *
- * @extends Factory<Scenario>
+ * @extends Factory<Game>
  */
-class ScenarioFactory extends Factory
+class GameFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<Scenario>
+     * @var class-string<Game>
      */
-    protected $model = Scenario::class;
+    protected $model = Game::class;
 
     /**
      * Define the model's default state.
@@ -29,7 +29,8 @@ class ScenarioFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->city(),
+            'name' => $this->faker->sentence(),
+            'user_id' => 1,
         ];
     }
 }

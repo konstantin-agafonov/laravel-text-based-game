@@ -31,8 +31,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class City extends BaseModel
 {
-    use CityRelationsTrait,
-        HasFactory,
+    use HasFactory,
         HasRemovableGlobalScopes;
 
     /**
