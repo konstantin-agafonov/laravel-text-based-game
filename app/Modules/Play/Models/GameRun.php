@@ -7,7 +7,6 @@ use App\Enums\GameRunStatus;
 use App\Models\BaseModel;
 use App\Models\HasRemovableGlobalScopes;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Game run model.
@@ -25,9 +24,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class GameRun extends BaseModel
 {
-    use GameRelationsTrait,
-        GameScopesTrait,
-        HasFactory,
+    use GameRunRelationsTrait,
+        GameRunScopesTrait,
         HasRemovableGlobalScopes;
 
     /**

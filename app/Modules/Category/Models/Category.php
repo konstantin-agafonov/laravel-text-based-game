@@ -1,26 +1,24 @@
 <?php
 
-namespace App\Modules\Play\Models;
+namespace App\Modules\Category\Models;
 
 use App\Models\BaseModel;
 use App\Models\HasRemovableGlobalScopes;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Game model.
+ * Category model.
  *
- * Represents a game scenario created by a user.
+ * Represents a Category entity.
  *
- * @property int $id Game identifier
- * @property string $name Game name
+ * @property int $id Category identifier
+ * @property string $name Category name
  * @property Carbon $created_at Creation timestamp
  * @property Carbon $updated_at Last update timestamp
  */
-class Game extends BaseModel
+class Category extends BaseModel
 {
-    use GameRelationsTrait,
-        GameScopesTrait,
+    use CategoryRelationsTrait,
         HasRemovableGlobalScopes;
 
     /**
@@ -30,7 +28,6 @@ class Game extends BaseModel
      */
     protected $fillable = [
         'name',
-        'user_id',
     ];
 
     /**

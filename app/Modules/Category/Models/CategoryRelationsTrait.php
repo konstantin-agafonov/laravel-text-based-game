@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Models;
+namespace App\Modules\Category\Models;
 
 use App\Modules\Play\Models\Game;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
 /**
- * User relationships trait.
+ * Category relationships trait.
  *
- * Defines relationships for the User model.
+ * Defines relationships for the Category model.
  *
  * @property Collection<Game> $games Games
  */
-trait UserRelationsTrait
+trait CategoryRelationsTrait
 {
     /**
-     * Get the games relationship.
+     * Get the game's user.
      *
-     * @return HasMany The games relationship
+     * @return HasMany Games relationship
      */
     public function games(): HasMany
     {
