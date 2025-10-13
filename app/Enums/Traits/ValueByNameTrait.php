@@ -22,6 +22,6 @@ trait ValueByNameTrait
                 return $case->value;
             }
         }
-        throw new Error(e($name) . " is not a valid backing value for enum " . self::class);
+        throw new Error( e($name . " is not a valid backing value for enum " . self::class) );
     }
 }
