@@ -20,13 +20,13 @@ class MoveData extends Data
     /**
      * Create a new MoveData instance.
      *
-     * @param int $game_run_id Game run ID
+     * @param int $gamerun_id Game run ID
      * @param string $scene Scene before move
      * @param string $move Move player input
      */
     public function __construct(
         #[Exists(GameRun::class, 'id')]
-        public readonly int $game_id,
+        public readonly int $gamerun_id,
         public readonly string $scene,
         public readonly string $move,
     ) {
