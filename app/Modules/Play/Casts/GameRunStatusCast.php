@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Casts;
+namespace App\Modules\Play\Casts;
 
-use App\Enums\GameRunStatus;
+use App\Modules\Play\Enums\GameRunStatus;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 

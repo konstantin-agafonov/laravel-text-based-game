@@ -2,10 +2,10 @@
 
 namespace App\Modules\Play\Models;
 
-use App\Casts\GameRunStatusCast;
-use App\Enums\GameRunStatus;
 use App\Models\BaseModel;
 use App\Models\HasRemovableGlobalScopes;
+use App\Modules\Play\Casts\GameRunStatusCast;
+use App\Modules\Play\Enums\GameRunStatus;
 use Carbon\Carbon;
 
 /**

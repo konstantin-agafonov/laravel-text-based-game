@@ -2,7 +2,7 @@
 
 namespace App\Modules\Play\Http\Resources;
 
-use App\Enums\GameRunStatus;
+use App\Modules\Play\Enums\GameRunStatus;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
