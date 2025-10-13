@@ -27,7 +27,7 @@ class GameRunStatusCast implements CastsAttributes
         array $attributes
     ): ?GameRunStatus
     {
-        if (!is_null($value)) {
+        if ($value !== null) {
             return GameRunStatus::from((int) $value);
         }
 

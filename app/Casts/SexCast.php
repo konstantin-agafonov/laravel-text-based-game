@@ -27,7 +27,7 @@ class SexCast implements CastsAttributes
         array $attributes
     ): ?SexEnum
     {
-        if (!is_null($value)) {
+        if ($value !== null) {
             return SexEnum::from((int) $value);
         }
 
