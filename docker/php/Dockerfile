@@ -23,10 +23,10 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-enable exif
 
-# Установка Xdebug
+# Install Xdebug
 RUN docker-php-ext-enable xdebug
 
-# Копируем конфиг Xdebug
+# Copy Xdebug config
 COPY ./docker/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 RUN touch /var/log/xdebug.log

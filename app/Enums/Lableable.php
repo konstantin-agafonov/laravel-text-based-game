@@ -3,12 +3,12 @@
 namespace App\Enums;
 
 /**
- * Интерфейс получения лейбла.
+ * Interface for enums providing a display label.
  */
 interface Lableable
 {
     /**
-     * Возвращает лейбл.
+     * Returns the display label.
      *
      * @return string
      */

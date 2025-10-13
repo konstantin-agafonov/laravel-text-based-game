@@ -2,7 +2,7 @@
 
 namespace App\Modules\Play\Casts;
 
-use App\Modules\Play\Enums\GameRunStatus;
+use App\Modules\Play\Enums\GameStatus;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,35 +12,35 @@ use Illuminate\Database\Eloquent\Model;
 class GameStatusCast implements CastsAttributes
 {
     /**
-     * Приводит значение к типу.
+     * Cast the stored value to a typed enum.
      *
-     * @param Model $model Модель
-     * @param string $key Ключ атрибута
-     * @param mixed $value Значение атрибута
-     * @param array $attributes Атрибуты
-     * @return null|GameRunStatus
+     * @param Model $model Model instance
+     * @param string $key Attribute key
+     * @param mixed $value Attribute value
+     * @param array $attributes Raw attributes
+     * @return null|GameStatus
      */
     public function get(
         Model $model,
         string $key,
         mixed $value,
         array $attributes
-    ): ?GameRunStatus
+    ): ?GameStatus
     {
         if ($value !== null) {
-            return GameRunStatus::from((int) $value);
+            return GameStatus::from((int) $value);
         }
 
         return null;
     }
 
     /**
-     * Подготавливает значение для сохранения в БД.
+     * Prepare the value for storage in the database.
      *
-     * @param Model $model Модель
-     * @param string $key Ключ атрибута
-     * @param mixed $value Значение атрибута
-     * @param array $attributes Атрибуты
+     * @param Model $model Model instance
+     * @param string $key Attribute key
+     * @param mixed $value Attribute value
+     * @param array $attributes Raw attributes
      * @return array
      */
     public function set(
@@ -51,7 +51,7 @@ class GameStatusCast implements CastsAttributes
     ): array
     {
         return [
-            'status' => (string) ($value instanceof GameRunStatus) ? $value->value : $value,
+            'status' => $value instanceof GameStatus ? (string) $value->value : (string) $value,
         ];
     }
 }

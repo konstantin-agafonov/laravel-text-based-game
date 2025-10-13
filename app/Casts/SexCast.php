@@ -7,17 +7,17 @@ use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Преобразователь пола.
+ * Sex attribute cast.
  */
 class SexCast implements CastsAttributes
 {
     /**
-     * Приводит значение к типу.
+     * Cast the stored value to a typed enum.
      *
-     * @param Model $model Модель
-     * @param string $key Ключ атрибута
-     * @param mixed $value Значение атрибута
-     * @param array $attributes Атрибуты
+     * @param Model $model Model instance
+     * @param string $key Attribute key
+     * @param mixed $value Attribute value
+     * @param array $attributes Raw attributes
      * @return null|SexEnum
      */
     public function get(
@@ -35,12 +35,12 @@ class SexCast implements CastsAttributes
     }
 
     /**
-     * Подготавливает значение для сохранения в БД.
+     * Prepare the value for storage in the database.
      *
-     * @param Model $model Модель
-     * @param string $key Ключ атрибута
-     * @param mixed $value Значение атрибута
-     * @param array $attributes Атрибуты
+     * @param Model $model Model instance
+     * @param string $key Attribute key
+     * @param mixed $value Attribute value
+     * @param array $attributes Raw attributes
      * @return array
      */
     public function set(
@@ -51,7 +51,7 @@ class SexCast implements CastsAttributes
     ): array
     {
         return [
-            'sex' => (string) ($value instanceof SexEnum) ? $value->value : $value,
+            'sex' => $value instanceof SexEnum ? (string) $value->value : (string) $value,
         ];
     }
 }

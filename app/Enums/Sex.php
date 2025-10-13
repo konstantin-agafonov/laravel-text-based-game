@@ -9,7 +9,7 @@ use App\Enums\Traits\ValueByNameTrait;
 use App\Enums\ValueByNameInterface;
 
 /*
- * Перечисление пола.
+ * Enumeration of sexes.
  */
 enum Sex: int implements Lableable, Arrayable, ValueByNameInterface
 {
@@ -17,25 +17,25 @@ enum Sex: int implements Lableable, Arrayable, ValueByNameInterface
         ValueByNameTrait;
 
     /*
-     * Мужской.
+     * Male.
      */
     case MALE = 0;
 
     /*
-     * Женский.
+     * Female.
      */
     case FEMALE = 1;
 
     /**
-     * Возвращает лейбл.
+     * Returns label.
      *
      * @return string
      */
     public function label(): string
     {
         return match ($this) {
-            self::MALE => 'Мужской',
-            self::FEMALE => 'Женский',
+            self::MALE => 'Male',
+            self::FEMALE => 'Female',
         };
     }
 }
