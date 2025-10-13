@@ -1,6 +1,8 @@
 <?php
 
+use App\Modules\Category\Routes\CategoryRoutes;
 use App\Modules\City\Routes\CityRoutes;
+use App\Modules\Play\Routes\GameRoutes;
 use App\Modules\Play\Routes\PlayRoutes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,10 +16,9 @@ Route::prefix('v1')
     ->as('v1.')
     ->middleware('auth:sanctum')
     ->group(function () {
-        // City routes
         CityRoutes::register();
-
-        // Play routes
         PlayRoutes::register();
+        GameRoutes::register();
+        CategoryRoutes::register();
     })
 ;
