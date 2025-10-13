@@ -4,8 +4,8 @@ namespace App\Modules\Play\Models;
 
 use App\Models\BaseModel;
 use App\Models\HasRemovableGlobalScopes;
+use App\Modules\Play\Casts\GameStatusCast;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Game model.
@@ -30,7 +30,11 @@ class Game extends BaseModel
      */
     protected $fillable = [
         'name',
+        'description',
         'user_id',
+        'category_id',
+        'scenario',
+        'status',
     ];
 
     /**
@@ -38,5 +42,8 @@ class Game extends BaseModel
      *
      * @var array<string, string>
      */
-    protected $casts = [];
+    protected $casts = [
+        'scenario' => 'array',
+        'status' => GameStatusCast::class,
+    ];
 }

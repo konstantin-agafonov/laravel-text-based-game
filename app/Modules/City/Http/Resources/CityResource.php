@@ -13,6 +13,17 @@ use morphos\Russian\GeographicalNamesInflection;
  *
  * @property int $id City identifier
  * @property string $name City name
+ * @property string|null $name_alt Alternative city name
+ * @property string|null $okato OKATO code (Russian classification)
+ * @property string|null $oktmo OKTMO code (Russian classification)
+ * @property bool|null $is_dual_name Whether the city has dual naming
+ * @property bool|null $is_capital Whether the city is a capital
+ * @property string|null $zip Postal code
+ * @property int|null $population City population
+ * @property string|null $year_founded Year the city was founded
+ * @property string|null $name_en English name of the city
+ * @property string|null $lat Latitude coordinate
+ * @property string|null $lon Longitude coordinate
  */
 class CityResource extends JsonResource
 {

@@ -5,14 +5,14 @@ namespace App\Enums\Traits;
 use Error;
 
 /**
- * Трейт получения значения перечисления по имени.
+ * Trait to obtain an enum backing value by its case name.
  */
 trait ValueByNameTrait
 {
     /**
-     * Возвращает значение по имени.
+     * Returns the backing value by case name.
      *
-     * @param string $name Имя перечисления
+     * @param string $name Enum case name
      * @return int
      */
     public static function getValueByName(string $name): int

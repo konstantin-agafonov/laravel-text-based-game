@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums;
+namespace App\Modules\Play\Enums;
 
 use App\Enums\Arrayable;
 use App\Enums\Lableable;
@@ -9,22 +9,27 @@ use App\Enums\Traits\ValueByNameTrait;
 use App\Enums\ValueByNameInterface;
 
 /*
- * Enumeration of sexes.
+ * Enumeration of gamerun statuses.
  */
-enum Sex: int implements Lableable, Arrayable, ValueByNameInterface
+enum GameRunStatus: int implements Lableable, Arrayable, ValueByNameInterface
 {
     use ToArrayTrait,
         ValueByNameTrait;
 
     /*
-     * Male.
+     * In progress.
      */
-    case MALE = 0;
+    case IN_PROGRESS = 0;
 
     /*
-     * Female.
+     * Win.
      */
-    case FEMALE = 1;
+    case WIN = 1;
+
+    /*
+     * Loose.
+     */
+    case LOOSE = 2;
 
     /**
      * Returns label.
@@ -34,8 +39,9 @@ enum Sex: int implements Lableable, Arrayable, ValueByNameInterface
     public function label(): string
     {
         return match ($this) {
-            self::MALE => 'Male',
-            self::FEMALE => 'Female',
+            self::IN_PROGRESS => 'In progress',
+            self::WIN => 'WIN',
+            self::LOOSE => 'LOOSE',
         };
     }
 }

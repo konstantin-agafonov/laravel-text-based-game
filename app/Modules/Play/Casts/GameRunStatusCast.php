@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Casts;
+namespace App\Modules\Play\Casts;
 
-use App\Enums\GameRunStatus;
+use App\Modules\Play\Enums\GameRunStatus;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,12 +12,12 @@ use Illuminate\Database\Eloquent\Model;
 class GameRunStatusCast implements CastsAttributes
 {
     /**
-     * Приводит значение к типу.
+     * Cast the stored value to a typed enum.
      *
-     * @param Model $model Модель
-     * @param string $key Ключ атрибута
-     * @param mixed $value Значение атрибута
-     * @param array $attributes Атрибуты
+     * @param Model $model Model instance
+     * @param string $key Attribute key
+     * @param mixed $value Attribute value
+     * @param array $attributes Raw attributes
      * @return null|GameRunStatus
      */
     public function get(
@@ -35,12 +35,12 @@ class GameRunStatusCast implements CastsAttributes
     }
 
     /**
-     * Подготавливает значение для сохранения в БД.
+     * Prepare the value for storage in the database.
      *
-     * @param Model $model Модель
-     * @param string $key Ключ атрибута
-     * @param mixed $value Значение атрибута
-     * @param array $attributes Атрибуты
+     * @param Model $model Model instance
+     * @param string $key Attribute key
+     * @param mixed $value Attribute value
+     * @param array $attributes Raw attributes
      * @return array
      */
     public function set(
@@ -51,7 +51,7 @@ class GameRunStatusCast implements CastsAttributes
     ): array
     {
         return [
-            'status' => (string) ($value instanceof GameRunStatus) ? $value->value : $value,
+            'status' => $value instanceof GameRunStatus ? (string) $value->value : (string) $value,
         ];
     }
 }

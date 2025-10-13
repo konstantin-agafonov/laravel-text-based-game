@@ -22,4 +22,17 @@ trait GameScopesTrait
     {
         return $query->where('user_id', $userID);
     }
+
+    /**
+     * Search by category ID scope.
+     *
+     * @param Builder $query Request
+     * @param int $categoryID Category ID
+     * @return Builder
+     */
+    public function scopeByCategoryID(Builder $query, int $categoryID): Builder
+    {
+        return $query->where('category_id', $categoryID);
+    }
+
 }

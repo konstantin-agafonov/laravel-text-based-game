@@ -6,7 +6,7 @@ use App\Enums\Traits\ToArrayTrait;
 use App\Enums\Traits\ValueByNameTrait;
 
 /*
- * Перечисление падежей русского языка.
+ * Enumeration of Russian grammatical cases.
  */
 enum RussianCase: int implements Lableable, Arrayable, ValueByNameInterface
 {
@@ -14,37 +14,37 @@ enum RussianCase: int implements Lableable, Arrayable, ValueByNameInterface
         ValueByNameTrait;
 
     /*
-     * Именительный.
+     * Nominative.
      */
     case NOMINATIVE = 0;
 
     /*
-     * Родительный.
+     * Genitive.
      */
     case GENITIVE = 1;
 
     /*
-     * Дательный.
+     * Dative.
      */
     case DATIVE = 2;
 
     /*
-     * Винительный.
+     * Accusative.
      */
     case ACCUSATIVE = 3;
 
     /*
-     * Творительный.
+     * Instrumental.
      */
     case INSTRUMENTAL = 4;
 
     /*
-     * Предложный.
+     * Prepositional.
      */
     case PREPOSITIONAL = 5;
 
     /**
-     * Возвращает лейбл на русском языке.
+     * Returns label in Russian.
      *
      * @return string
      */
@@ -61,7 +61,7 @@ enum RussianCase: int implements Lableable, Arrayable, ValueByNameInterface
     }
 
     /**
-     * Возвращает лейбл на английском языке.
+     * Returns label in English.
      *
      * @return string
      */

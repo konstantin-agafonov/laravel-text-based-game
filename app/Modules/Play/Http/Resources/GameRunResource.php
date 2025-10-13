@@ -2,7 +2,7 @@
 
 namespace App\Modules\Play\Http\Resources;
 
-use App\Enums\GameRunStatus;
+use App\Modules\Play\Enums\GameRunStatus;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -26,7 +26,7 @@ class GameRunResource extends JsonResource
      * Transform the resource into an array.
      *
      * @param Request $request The HTTP request instance
-     * @return array<string, mixed> The transformed city data
+     * @return array<string, mixed> The transformed game run data
      */
     public function toArray(Request $request): array
     {
@@ -38,6 +38,7 @@ class GameRunResource extends JsonResource
             'started_at'    => $this->started_at,
             'finished_at'   => $this->finished_at,
             'created_at'    => $this->created_at,
+            'updated_at'    => $this->updated_at,
         ];
     }
 }

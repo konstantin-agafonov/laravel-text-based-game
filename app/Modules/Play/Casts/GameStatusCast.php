@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace App\Casts;
+namespace App\Modules\Play\Casts;
 
-use App\Enums\Sex as SexEnum;
+use App\Modules\Play\Enums\GameStatus;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Sex attribute cast.
+ * Game status cast.
  */
-class SexCast implements CastsAttributes
+class GameStatusCast implements CastsAttributes
 {
     /**
      * Cast the stored value to a typed enum.
@@ -18,17 +18,17 @@ class SexCast implements CastsAttributes
      * @param string $key Attribute key
      * @param mixed $value Attribute value
      * @param array $attributes Raw attributes
-     * @return null|SexEnum
+     * @return null|GameStatus
      */
     public function get(
         Model $model,
         string $key,
         mixed $value,
         array $attributes
-    ): ?SexEnum
+    ): ?GameStatus
     {
         if ($value !== null) {
-            return SexEnum::from((int) $value);
+            return GameStatus::from((int) $value);
         }
 
         return null;
@@ -51,7 +51,7 @@ class SexCast implements CastsAttributes
     ): array
     {
         return [
-            'sex' => $value instanceof SexEnum ? (string) $value->value : (string) $value,
+            'status' => $value instanceof GameStatus ? (string) $value->value : (string) $value,
         ];
     }
 }

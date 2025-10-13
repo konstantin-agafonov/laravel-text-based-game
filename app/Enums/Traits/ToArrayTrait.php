@@ -3,12 +3,12 @@
 namespace App\Enums\Traits;
 
 /**
- * Трейт получения перечисления в виде массива.
+ * Trait to convert an enum to an associative array.
  */
 trait ToArrayTrait
 {
     /**
-     * Возвращает ассоциативный массив.
+     * Returns an associative array of backing values => labels.
      *
      * @return array
      */

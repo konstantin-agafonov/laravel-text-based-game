@@ -3,14 +3,14 @@
 namespace App\Enums;
 
 /**
- * Интерфейс получения значения перечисления по имени.
+ * Interface for enums that expose backing value by case name.
  */
 interface ValueByNameInterface
 {
     /**
-     * Возвращает значение по имени.
+     * Returns backing value by case name.
      *
-     * @param string $name Имя перечисления
+     * @param string $name Enum case name
      * @return int
      */
     public static function getValueByName(string $name): int;

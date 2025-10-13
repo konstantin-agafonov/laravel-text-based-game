@@ -3,12 +3,12 @@
 namespace App\Enums;
 
 /**
- * Интерфейс получения перечисления в виде массива.
+ * Interface for enums that can be represented as an array.
  */
 interface Arrayable
 {
     /**
-     * Возвращает ассоциативный массив.
+     * Returns an associative array of backing values => labels.
      *
      * @return array
      */
