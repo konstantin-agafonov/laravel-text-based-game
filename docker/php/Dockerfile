@@ -50,9 +50,6 @@ RUN composer install --optimize-autoloader
 COPY ./docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Set permissions
-#RUN chown -R www:www /var/www
-
 USER www
 
 EXPOSE 9000
