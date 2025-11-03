@@ -29,8 +29,6 @@ RUN docker-php-ext-enable xdebug
 # Copy Xdebug config
 COPY ./docker/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
-RUN touch /var/log/xdebug.log
-
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- \
     --install-dir=/usr/local/bin \
@@ -49,9 +47,6 @@ RUN composer install --optimize-autoloader
 # Copy entrypoint
 COPY ./docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
-
-# Set permissions
-#RUN chown -R www:www /var/www
 
 USER www
 

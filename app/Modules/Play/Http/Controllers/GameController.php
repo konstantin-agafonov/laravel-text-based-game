@@ -74,7 +74,8 @@ class GameController extends Controller
      */
     public function update(GameData $gameData, Game $game): GameResource
     {
-        return GameResource::make($game->update($gameData->toArray()));
+        $game->update($gameData->toArray());
+        return GameResource::make($game);
     }
 
     /**

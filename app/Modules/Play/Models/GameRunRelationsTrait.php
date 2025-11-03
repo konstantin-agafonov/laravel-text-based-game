@@ -4,6 +4,7 @@ namespace App\Modules\Play\Models;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Game run relationships trait.
@@ -31,6 +32,16 @@ trait GameRunRelationsTrait
      */
     public function game(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Game::class);
+    }
+
+    /**
+     * Get the game run's moves.
+     *
+     * @return HasMany The moves relationship
+     */
+    public function moves(): HasMany
+    {
+        return $this->hasMany(Move::class);
     }
 }

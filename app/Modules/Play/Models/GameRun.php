@@ -28,6 +28,8 @@ class GameRun extends BaseModel
         GameRunScopesTrait,
         HasRemovableGlobalScopes;
 
+    protected $table = 'gameruns';
+
     /**
      * The attributes that are mass assignable.
      *
